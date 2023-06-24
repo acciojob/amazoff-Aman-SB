@@ -48,8 +48,8 @@ public class OrderService {
 
 
     public Integer getOrdersLeftAfterGivenTimeByPartnerId(String time, String partnerId) {
-        String dtime[] = time.split(":");
-        int resultTime = Integer.parseInt(dtime[0])*60 + Integer.parseInt(dtime[1]);
+        String[] currtime = time.split(":");
+        int resultTime = Integer.parseInt(currtime[0])*60 + Integer.parseInt(currtime[1]);
         return orderRepository.getOrdersLeftAfterGivenTimeByPartnerId(resultTime,partnerId);
     }
 
@@ -64,7 +64,7 @@ public class OrderService {
         if(HH.length() < 2){
             HH = '0' + HH;
         }
-        return MM + ':' + HH;
+        return (HH+':'+MM);
     }
 
     public void deletePartnerById(String partnerId) {
